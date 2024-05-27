@@ -1,0 +1,44 @@
+﻿@model IList<BookingManager.Models.ApartmentDTO>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Search Results</h2>
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="row">
+                @foreach (var apartment in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">@apartment.Name</h5>
+                                <p class="card-text">@apartment.Description</p>
+                                <p class="card-text"><strong>State:</strong> @apartment.State</p>
+                                <p class="card-text"><strong>Country:</strong> @apartment.Country</p>
+                                <p class="card-text"><strong>Number of Rooms:</strong> @apartment.NumberOfRooms</p>
+                                <p class="card-text"><strong>Status:</strong> @apartment.Status</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-center">No apartments found matching your criteria.</p>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

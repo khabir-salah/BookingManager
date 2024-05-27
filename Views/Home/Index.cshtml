@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    class="text-center">
+    <h1 class="display-4">Welcome To Salah Shortlet</h1>
+</div>
+    
+@model BookingManager.Models.SearchDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Search</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Search for Apartments</h2>
+        <form asp-action="SearchResult" asp-controller="Home" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="start">Start Date</label>
+                    <input type="date" class="form-control" id="start" name="Start" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="end">End Date</label>
+                    <input type="date" class="form-control" id="end" name="End" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="noOfAdult">Number of Adults</label>
+                    <input type="number" class="form-control" id="noOfAdult" name="NoOfAdult" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="noOfChildren">Number of Children</label>
+                    <input type="number" class="form-control" id="noOfChildren" name="NoOfChildren">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="noOfRooms">Number of Rooms</label>
+                    <input type="number" class="form-control" id="noOfRooms" name="NoOfRooms" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" name="State" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" name="Country" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </form>
+    </div>
+
+    <img src="C:\Users\ADMIN\Documents\images.jpeg" alt="sample" width="500" height="300" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
