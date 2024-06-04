@@ -1,0 +1,21 @@
+﻿@model BookingManager.Models.ApartmentDTO
+
+
+
+<p><h1>Booked Successfully. Thanks for your Patronage</h1></p>
+<div class="col-md-6">
+    <img src="@Model.PrimaryImageUrl" class="card-img" alt="@Model.Name">
+</div>
+<div class="col-md-6">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text"><strong>Guests:</strong> @Model.Guests</p>
+        <p class="card-text"><strong>Bedrooms:</strong> @Model.BedRooms</p>
+        <p class="card-text"><strong>Number of Rooms:</strong> @Model.NumberOfRooms</p>
+        <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
+        <p class="card-text"><strong>Location:</strong> @Model.City, @Model.State, @Model.Country</p>
+        <p class="card-text"><strong>Facilities:</strong> @string.Join(", ", Model.Facilities)</p>
+    </div>
+
+</div>

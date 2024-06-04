@@ -25,10 +25,11 @@ namespace BookingManager.Controllers
         {
             var apartment = _apartmentService.GetApartment(id);
             return View(apartment);
-        }public IActionResult Detail(string av)
+        }
+        public IActionResult CheckOut(int id)
         {
-            var apartment = _apartmentService.GetApartment(int.Parse(av));
-            return View(apartment);
+            var apartment = _apartmentService.CheckOut(id);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AddApartment()

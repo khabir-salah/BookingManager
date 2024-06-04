@@ -23,7 +23,7 @@
                         <p class="card-text"><strong>Guests:</strong> @apartment.Guests</p>
                         <p class="card-text"><strong>Price:</strong> $@apartment.Price</p>
                         <a href="@Url.Action("Details", "Apartment", new { id = apartment.Id })" class="btn btn-primary">View Details</a>
-                        <a asp-controller="Apartment" asp-action="CheckOut" asp-route-id="@apartment.Id">Check Out</a>
+                        <a asp-controller="Apartment" asp-action="Details" asp-route-id="@apartment.Id">Details</a>
                     </div>
                 </div>
             </div>

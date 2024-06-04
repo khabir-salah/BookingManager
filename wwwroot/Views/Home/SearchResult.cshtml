@@ -29,11 +29,8 @@
                             <p class="card-text"><strong>Price:</strong> $@apartment.Price</p>
                             <p class="card-text"><strong>Location:</strong> @apartment.City, @apartment.State, @apartment.Country</p>
                             <p class="card-text"><strong>Facilities:</strong> @string.Join(", ", apartment.Facilities)</p>
-                            <a href="@Url.Action("BookApartment", "Home", new { id = apartment.Id })" class="btn btn-primary">Book Apartment</a>
                         </div>
-
                     </div>
-
                 }
             </div>
 

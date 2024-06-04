@@ -38,10 +38,10 @@ namespace BookingManager.Controllers
             return View("SearchResult", apartments);
         }
 
-        //public IActionResult Search()
-        //{
-        //    var apartments = _apartmentService.GetApartments();
-        //    return View(apartments);
-        //}
+        public IActionResult BookApartment(int id)
+        {
+            var book = _apartmentService.BookApartment(id);
+            return View("BookApartment", book);
+        }
     }
 }

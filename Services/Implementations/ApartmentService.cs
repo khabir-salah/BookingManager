@@ -5,6 +5,7 @@ using BookingManager.Models;
 using BookingManager.Repositories.Interfaces;
 using BookingManager.Services.Interfaces;
 using Mapster;
+using System.Linq.Expressions;
 using System.Net;
 
 namespace BookingManager.Services.Implementations
@@ -75,11 +76,14 @@ namespace BookingManager.Services.Implementations
         }
         public IList<ApartmentDTO>  SearchApartment(SearchDTO request)
         {
-            var apartment = _apartmentRepository.GetApartments().Where(s => s.NumberOfRooms == request.NoOfRooms && (s.State == request.State || s.Country == request.Country) && s.Status == Enums.ApartmentStatus.Available).ToList();
+            var guest = request.NoOfAdult + request.NoOfChildren;
+            Expression<Func<Apartment, bool>> expression = apartment => (request.NoOfRooms==0 || apartment.NumberOfRooms == request.NoOfRooms) && (guest==0 || apartment.Guests == guest ) && (request.Country == null || apartment.Country.Contains(request.Country)) && (request.State == null || apartment.State.Contains(request.State)) && (apartment.Status == Enums.ApartmentStatus.Available);
+            var apartment = _apartmentRepository.GetApartments(expression).ToList();
             if(apartment.Any())
             {
                 return apartment.Select(apartment => new ApartmentDTO
                 {
+                    Id = apartment.Id,
                     Name = apartment.Name,
                     BedRooms = apartment.BedRooms,
                     City = apartment.City,
@@ -97,8 +101,26 @@ namespace BookingManager.Services.Implementations
                 }).ToList();
                 
             }
-            throw new ApartmentNotFoundException("Apartment can not be found");
+            return null;
 
         }
+
+        public ApartmentDTO BookApartment(int id)
+        {
+            var booking = _apartmentRepository.GetApartment(a => a.Id == id);
+            booking.Status = Enums.ApartmentStatus.Unavailable;
+            var time = DateTime.Now.AddSeconds(30);
+            _unitOfWork.SaveChanges();
+               return booking.Adapt<ApartmentDTO>();
+        }
+
+        public ApartmentDTO CheckOut(int id)
+        {
+            var booking = _apartmentRepository.GetApartment(a => a.Id == id);
+            booking.Status = Enums.ApartmentStatus.Available;
+            _unitOfWork.SaveChanges();
+            return booking.Adapt<ApartmentDTO>();
+        }
+
     }
 }

@@ -1,13 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div>
-    class="text-center">
-    <h1 class="display-4">Welcome To Salah Shortlet</h1>
-</div>
-    
-@model BookingManager.Models.SearchDTO
+﻿@model BookingManager.Models.SearchDTO
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +10,9 @@
 
 </head>
 <body>
-
-    
+    <div class="container mt-5">
         <h2 class="text-center">Search for Apartments</h2>
-        <form asp-action="SearchResult" asp-controller="Home" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-
+        <form asp-action="Search" method="post" class="mt-4">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="start">Start Date</label>
@@ -60,13 +49,16 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Search</button>
         </form>
-    
-
-    <img src="C:\Users\ADMIN\Documents\images.jpeg" alt="sample" width="500" height="300" />
+    </div>
+    <script>
+        // JavaScript to set the minimum date for the Start Date field to today's date
+        document.addEventListener('DOMContentLoaded', function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('start').setAttribute('min', today);
+        });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-

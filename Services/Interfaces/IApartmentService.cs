@@ -16,5 +16,9 @@ namespace BookingManager.Services.Interfaces
         BaseResponse UpdateApartment(int id, ApartmentDTO request);
         public IList<ApartmentDTO> SearchApartment(SearchDTO request);
 
+        ApartmentDTO BookApartment(int id);
+        ApartmentDTO CheckOut(int id);
+
+
     }
 }
